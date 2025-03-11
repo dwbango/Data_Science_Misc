@@ -1,0 +1,20 @@
+// The Ensemble Model
+digraph {
+	A [label="Base Model 1
+(Random Forest)"]
+	B [label="Base Model 2
+(GBM)"]
+	C [label="Base Model 3
+(XGBoost)"]
+	D [label="Meta Model
+(Linear Regression)"]
+	X [label="Input Features"]
+	Y [label="Final Prediction"]
+	X -> A
+	X -> B
+	X -> C
+	A -> D [label=" Pred1"]
+	B -> D [label=" Pred2"]
+	C -> D [label=" Pred3"]
+	D -> Y [label=" Stacked Prediction"]
+}
