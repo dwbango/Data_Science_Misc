@@ -6,10 +6,10 @@
 ## 2. Data Understanding
 - Source: https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/insurance.csv
 - License: Public domain / CC0
-
 - Dataset: insurance.csv (1,338 rows, 7 columns)
 - No missing values detected.
-- BMI ranges ~15–53; charges are heavily right-skewed.
+- BMI range: min = 15.96; max = 53.13
+- Charges: mean = 13,270.42; median = 9,382.03; skewness ≈ 1.52 (right-skewed)
 - Categorical variables:
   - sex (2 levels: male, female)
   - smoker (2 levels: yes, no)
