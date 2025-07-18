@@ -32,16 +32,19 @@ insurance-demo/
 ├── src/                 # Python modules and scripts
 │   ├── db_utils.py      # DB connection and loader
 │   ├── download_data.py # Download raw CSV
+│   ├── eda.py           # Exploratory data analysis
+│   ├── modeling.py      # Train & save model
 │   ├── load_staging.py  # Script to load CSV into staging
-│   └── score.py         # Load model, score data, write results
-├── run_pipeline.sh      # Bash wrapper for full ELT + scoring
+│   ├── score.py         # Load model, score data, write results
+│   └── main.py          # Orchestrate full pipeline
+├── run_pipeline.sh      # Bash wrapper for ELT + scoring
 ├── requirements.txt     # Python dependencies
 └── README.md            # Project overview and instructions
 
+</details>
 
 
-
-**Getting Started**
+Getting Started
 	1.	Clone the repo
 
 git clone https://github.com/dwbango/Data_Science_Misc.git
@@ -71,10 +74,11 @@ Upload the exported CSVs in the data/ folder to Power BI Service.
 ⸻
 
 Next Steps
-	•	Export model_results and feature_importances to CSV for web reporting.
+	•	Export model_results and feature importances to CSV for web reporting.
 	•	Build and style the Power BI report in the Power BI Service.
 
-Future Works
-	•	Set up an on-premises gateway for live SQL connectivity.
-
+Future Work
+	•	Set up an on-premises Power BI Gateway for live SQL connectivity.
+	•	Implement a simple REST API (Flask/FastAPI) to allow staff to input member profiles and retrieve high-cost probabilities.
+	•	Monitor model drift and retrain periodically based on new data.
 
