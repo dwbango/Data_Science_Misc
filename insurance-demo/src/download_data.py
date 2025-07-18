@@ -1,15 +1,41 @@
-import requests
+# src/download_data.py
+
 import os
+import requests
 
-DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
-os.makedirs(DATA_DIR, exist_ok=True)
+def download_data(url: str, dst_dir: str = None) -> str:
+    """
+    Download the insurance.csv from the given URL into dst_dir/data.
+    
+    Parameters
+    ----------
+    url : str
+        Web address of the CSV to download.
+    dst_dir : str, optional
+        Directory to save the file in. Defaults to '../data' relative to this script.
+    
+    Returns
+    -------
+    str
+        Full path to the downloaded file.
+    """
+    # Determine destination directory
+    base_dir = os.path.dirname(__file__)
+    data_dir = dst_dir or os.path.join(base_dir, '..', 'data')
+    os.makedirs(data_dir, exist_ok=True)
 
-url = "https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/insurance.csv"
-dst = os.path.join(DATA_DIR, "insurance.csv")
+    # Download
+    dst_path = os.path.join(data_dir, "insurance.csv")
+    print(f"Downloading to {dst_path} …")
+    response = requests.get(url)
+    response.raise_for_status()
 
-print(f"Downloading to {dst} …")
-r = requests.get(url)
-r.raise_for_status()
-with open(dst, "wb") as f:
-    f.write(r.content)
-print("Download complete.")
+    # Write to disk
+    with open(dst_path, "wb") as f:
+        f.write(response.content)
+    print("Download complete.")
+    return dst_path
+
+if __name__ == "__main__":
+    DATA_URL = "https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/insurance.csv"
+    download_data(DATA_URL)

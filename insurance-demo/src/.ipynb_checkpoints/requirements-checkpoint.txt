@@ -1,0 +1,8 @@
+pandas
+matplotlib
+sqlalchemy
+pymssql
+scikit-learn
+joblib
+requests
+ipython-sql
