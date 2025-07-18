@@ -17,21 +17,22 @@ Tech Stack
 	•	ETL & automation: Bash, cron (macOS launchd alternative)
 	•	Visualization: Power BI Service
 
-Repository Structure
+<details>
+<summary><strong>Repository Structure</strong></summary>
 
 insurance-demo/
-├── data/                       # Raw and exported CSV files
-├── docs/                       # CRISP-DM plan, data license
-├── reports/                    # Dashboard screenshots
-├── sql/                        # SQL scripts for schemas, staging, and production loads
-├── src/                        # Python modules and scripts
-│   ├── db_utils.py            # DB connection and loader
-│   ├── download_data.py       # Download raw CSV
-│   ├── score.py               # Load model, score data, write results
-│   └── load_staging.py        # Script to load CSV into staging
-├── run_pipeline.sh            # Bash wrapper for full ELT + scoring
-├── requirements.txt           # Python dependencies
-└── README.md                  # Project overview and instructions
+├── data/                # Raw and exported CSV files
+├── docs/                # CRISP-DM plan, data license
+├── reports/             # Dashboard screenshots
+├── sql/                 # SQL scripts for schemas, staging, and production loads
+├── src/                 # Python modules and scripts
+│   ├── db_utils.py      # DB connection and loader
+│   ├── download_data.py # Download raw CSV
+│   ├── load_staging.py  # Script to load CSV into staging
+│   └── score.py         # Load model, score data, write results
+├── run_pipeline.sh      # Bash wrapper for full ELT + scoring
+├── requirements.txt     # Python dependencies
+└── README.md            # Project overview and instructions
 
 Getting Started
 1. Clone the repo
