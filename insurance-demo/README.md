@@ -1,25 +1,29 @@
-Insurance Cost Prediction Pipeline
+# Insurance Cost Prediction Pipeline
 
-Project Overview
+## Project Overview
+This repository contains an end-to-end solution for predicting which insurance members will incur high annual healthcare costs (> \$20,000). It follows the CRISP-DM framework to ingest raw data, clean and transform it in SQL Server, perform exploratory data analysis (EDA) and modeling in Python, automate the pipeline, and visualize results in Power BI.
 
-This repository contains an end-to-end solution for predicting which insurance members will incur high annual healthcare costs (> $20,000). It follows the CRISP‑DM framework to ingest raw data, clean and transform it in SQL Server, perform exploratory data analysis (EDA) and modeling in Python, automate the pipeline, and visualize results in Power BI.
+**Key features:**
+- SQL Server schemas for staging and production  
+- Python scripts for data ingestion, cleaning, modeling, and scoring  
+- Random Forest classifier with hyperparameter tuning and calibration  
+- Automated daily pipeline via cron (or launchd)  
+- Interactive dashboard in Power BI Service (web)  
 
-Key features:
-	•	SQL Server schemas for staging and production
-	•	Python scripts for data ingestion, cleaning, modeling, and scoring
-	•	Random Forest classifier with hyperparameter tuning and calibration
-	•	Automated daily pipeline via cron (or launchd)
-	•	Interactive dashboard in Power BI Service (web)
+---
 
-Tech Stack
-	•	Data storage & processing: Microsoft SQL Server (Docker)
-	•	Programming: Python 3.10, pandas, SQLAlchemy, pymssql, scikit-learn, joblib
-	•	ETL & automation: Bash, cron (macOS launchd alternative)
-	•	Visualization: Power BI Service
+## Tech Stack
+- **Data storage & processing:** Microsoft SQL Server (Docker)  
+- **Programming:** Python 3.10, pandas, SQLAlchemy, pymssql, scikit-learn, joblib  
+- **ETL & automation:** Bash, cron (macOS launchd alternative)  
+- **Visualization:** Power BI Service  
+
+---
 
 <details>
 <summary><strong>Repository Structure</strong></summary>
 
+```plaintext
 insurance-demo/
 ├── data/                # Raw and exported CSV files
 ├── docs/                # CRISP-DM plan, data license
@@ -34,19 +38,25 @@ insurance-demo/
 ├── requirements.txt     # Python dependencies
 └── README.md            # Project overview and instructions
 
+</details>
+
+
+
+⸻
+
 Getting Started
-1. Clone the repo
+	1.	Clone the repo
 
 git clone https://github.com/dwbango/Data_Science_Misc.git
 cd Data_Science_Misc/insurance-demo
 
 
-2. Install dependencies
+	2.	Install dependencies
 
 pip install -r requirements.txt
 
 
-3. Download data
+	3.	Download data
 
 cd src
 python download_data.py
@@ -59,13 +69,15 @@ cd ..
 
 
 	5.	View the dashboard
-	• Upload the exported CSVs in the data/ folder to Power BI Service.
-
-Next Steps
-	• Export model_results and feature_importances to CSV for web reporting.
-	• Build and style the Power BI report in the Power BI Service.
- Future Works:
-	• Set up an on-premises gateway for live SQL connectivity.
+Upload the exported CSVs in the data/ folder to Power BI Service.
 
 ⸻
+
+Next Steps
+	•	Export model_results and feature_importances to CSV for web reporting.
+	•	Build and style the Power BI report in the Power BI Service.
+
+Future Works
+	•	Set up an on-premises gateway for live SQL connectivity.
+
 
