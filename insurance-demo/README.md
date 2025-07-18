@@ -34,18 +34,18 @@ insurance-demo/
 └── README.md                  # Project overview and instructions
 
 Getting Started
-	1.	Clone the repo
+1. Clone the repo
 
-git clone https://github.com/yourusername/Data_Science_Misc.git
+git clone https://github.com/dwbango/Data_Science_Misc.git
 cd Data_Science_Misc/insurance-demo
 
 
-	2.	Install dependencies
+2. Install dependencies
 
 pip install -r requirements.txt
 
 
-	3.	Download data
+3. Download data
 
 cd src
 python download_data.py
@@ -58,12 +58,13 @@ cd ..
 
 
 	5.	View the dashboard
-	•	Upload the exported CSVs in the data/ folder to Power BI Service.
+	• Upload the exported CSVs in the data/ folder to Power BI Service.
 
 Next Steps
-	•	Export model_results and feature_importances to CSV for web reporting.
-	•	Build and style the Power BI report in the Power BI Service.
-	•	(Optional) Set up an on-premises gateway for live SQL connectivity.
+	• Export model_results and feature_importances to CSV for web reporting.
+	• Build and style the Power BI report in the Power BI Service.
+ Future Works:
+	• Set up an on-premises gateway for live SQL connectivity.
 
 ⸻
 
