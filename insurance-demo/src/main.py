@@ -1,26 +1,27 @@
 # src/main.py
 
+from download_data import download_data
+from eda import run_eda
+from modeling import run_modeling
+from score import main as run_scoring
+
+# URL for the raw CSV
+DATA_URL = "https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/insurance.csv"
+
 def main():
-    """
-    Orchestrate the end-to-end pipeline:
-      1) Download raw data
-      2) Run EDA
-      3) Train & save model
-      4) Score new data
-    """
-    print("Step 1: download data")
-    # download_data(...)
+    print("== Step 1: Download raw data ==")
+    download_data(DATA_URL)
 
-    print("Step 2: exploratory data analysis")
-    # run_eda()
+    print("\n== Step 2: Exploratory Data Analysis ==")
+    run_eda()
 
-    print("Step 3: modeling")
-    # run_modeling(...)
+    print("\n== Step 3: Train & Save Model ==")
+    run_modeling()
 
-    print("Step 4: scoring")
-    # run_scoring(...)
+    print("\n== Step 4: Score & Write Results ==")
+    run_scoring()
 
-    print("Pipeline complete.")
+    print("\nPipeline complete!")
 
 if __name__ == "__main__":
     main()

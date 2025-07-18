@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# SQL Server artifacts
+*.mdf
+*.ldf
+
+# Python pickles & caches
+*.pkl
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Logs
+pipeline.log
+
+# Virtual env (if you ever create one here)
+env/
+venv/
