@@ -38,13 +38,10 @@ insurance-demo/
 ├── requirements.txt     # Python dependencies
 └── README.md            # Project overview and instructions
 
-</details>
 
 
 
-⸻
-
-Getting Started
+**Getting Started**
 	1.	Clone the repo
 
 git clone https://github.com/dwbango/Data_Science_Misc.git
