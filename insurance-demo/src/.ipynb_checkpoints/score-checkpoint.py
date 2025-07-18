@@ -7,15 +7,9 @@ from sqlalchemy import create_engine
 
 # ─── Configuration ─────────────────────────────────────────────────────────────
 
-# SQL Server connection string
-DB_CONN = "mssql+pymssql://sa:MyStrongPass123@localhost:1433/InsurancePrediction"
-
-# Path to the trained model (sis in the same folder as this script)
+DB_CONN    = "mssql+pymssql://sa:MyStrongPass123@localhost:1433/InsurancePrediction"
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "insurance_cost_model.pkl")
-
-# Classification threshold for “high_cost”
-THRESHOLD = 0.10
-
+THRESHOLD  = 0.10
 
 # ─── Helper functions ─────────────────────────────────────────────────────────
 
@@ -24,7 +18,6 @@ def load_clean_data():
     engine = create_engine(DB_CONN)
     df = pd.read_sql("SELECT * FROM production.insurance_clean", engine)
     return df, engine
-
 
 def preprocess_for_scoring(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -41,11 +34,13 @@ def preprocess_for_scoring(df: pd.DataFrame) -> pd.DataFrame:
         "sex_male", "smoker_True",
         "region_northwest", "region_southeast", "region_southwest"
     ]
+    # if any expected column is missing, add it filled with zeros
     for col in expected_cols:
-        X.setdefault(col, 0)  # add missing cols with zeros
+        if col not in X.columns:
+            X[col] = 0
 
+    # return in the exact training-order
     return X[expected_cols]
-
 
 # ─── Main scoring routine ─────────────────────────────────────────────────────
 
@@ -77,7 +72,6 @@ def main():
     )
 
     print(f"Scored {len(results)} rows at threshold={THRESHOLD}")
-
 
 if __name__ == "__main__":
     main()
