@@ -9,17 +9,17 @@ __pycache__/
 # SQL Server artifacts
 *.mdf
 *.ldf
+*.bin
 
 # Python pickles & caches
 *.pkl
+
+# Pipeline log
+pipeline.log
 
 # OS artifacts
 .DS_Store
 Thumbs.db
 
-# Logs
-pipeline.log
-
-# Virtual env (if you ever create one here)
-env/
-venv/
+# IDE settings
+.vscode/
