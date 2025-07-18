@@ -1,31 +1,37 @@
 # src/data_utils.py
 
+import os
 import pandas as pd
-from sqlalchemy import create_engine
 from pandas import DataFrame, Series
+from sqlalchemy import create_engine
+from sqlalchemy.engine import Engine
 from typing import Tuple
 
-def get_engine() -> "Engine":
+def get_engine() -> Engine:
     """
     Return a SQLAlchemy engine connected to the InsurancePrediction database.
     """
     conn_str = "mssql+pymssql://sa:MyStrongPass123@localhost:1433/InsurancePrediction"
     return create_engine(conn_str)
 
-def load_data(path: str = "../data/insurance.csv") -> DataFrame:
+def load_data(path: str | None = None) -> DataFrame:
     """
     Load the raw insurance CSV into a pandas DataFrame.
 
     Parameters
     ----------
-    path : str
-        Filesystem path to `insurance.csv`.
+    path : str, optional
+        Filesystem path to `insurance.csv`. If None, will load
+        '../data/insurance.csv' relative to this script.
 
     Returns
     -------
     DataFrame
         Loaded insurance data.
     """
+    if path is None:
+        base_dir = os.path.dirname(__file__)
+        path = os.path.join(base_dir, "..", "data", "insurance.csv")
     return pd.read_csv(path)
 
 def get_clean_data() -> DataFrame:

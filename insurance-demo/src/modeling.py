@@ -1,5 +1,6 @@
 # src/modeling.py
 
+import os
 import pandas as pd
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
@@ -12,7 +13,7 @@ def run_modeling(
     test_size: float = 0.2,
     random_state: int = 42,
     n_jobs: int = -1,
-    model_path: str = "../src/insurance_cost_model.pkl"
+    model_path: str = None
 ) -> None:
     """
     Train, evaluate, and persist a RandomForest model for high-cost prediction.
@@ -23,18 +24,7 @@ def run_modeling(
     3) Split into train/test sets.
     4) Perform GridSearchCV over RF hyperparameters.
     5) Print classification report & ROC AUC.
-    6) Save the best model to disk.
-
-    Parameters
-    ----------
-    test_size : float
-        Fraction of data to reserve for testing.
-    random_state : int
-        Seed for reproducibility.
-    n_jobs : int
-        Number of parallel jobs for GridSearchCV.
-    model_path : str
-        Filepath where the trained model will be saved.
+    6) Save the best model to disk (inside src/).
     """
     # 1) Load & preprocess
     df = get_clean_data()
@@ -75,9 +65,11 @@ def run_modeling(
     auc = roc_auc_score(y_test, y_proba)
     print(f"ROC AUC: {auc:.3f}")
 
-    # 5) Persist model
-    joblib.dump(best, model_path)
-    print(f"Saved trained model to: {model_path}")
+    # 5) Persist model into the same folder as this script
+    script_dir = os.path.dirname(__file__)
+    dest = model_path or os.path.join(script_dir, "insurance_cost_model.pkl")
+    joblib.dump(best, dest)
+    print(f"Saved trained model to: {dest}")
 
 
 if __name__ == "__main__":

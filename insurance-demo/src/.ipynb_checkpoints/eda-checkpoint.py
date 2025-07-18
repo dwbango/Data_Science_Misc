@@ -1,13 +1,18 @@
 # src/eda.py
 
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def load_data(path: str = "../data/insurance.csv") -> pd.DataFrame:
+def load_data() -> pd.DataFrame:
     """
     Load raw insurance CSV into a DataFrame.
+    Always looks in the repo's data/ folder.
     """
-    return pd.read_csv(path)
+    # path relative to this script
+    base_dir = os.path.dirname(__file__)
+    csv_path = os.path.join(base_dir, os.pardir, "data", "insurance.csv")
+    return pd.read_csv(csv_path)
 
 def summarize_dataframe(df: pd.DataFrame) -> dict:
     """
@@ -75,20 +80,26 @@ def run_eda() -> None:
     print("\nNUMERIC CORRELATIONS:\n", compute_numeric_corr(df, ["age","bmi","children","charges"]))
 
     # Visualizations
-    plot_histogram(df["charges"],
-                   bins=50,
-                   title="Charges Distribution",
-                   xlabel="Charges ($)",
-                   ylabel="Frequency")
-    plot_histogram(df["children"],
-                   bins=df["children"].nunique(),
-                   title="Children Count",
-                   xlabel="Number of Children",
-                   ylabel="Frequency")
-    plot_boxplot(df,
-                 "charges",
-                 title="Boxplot of Charges",
-                 ylabel="Charges ($)")
+    plot_histogram(
+        df["charges"],
+        bins=50,
+        title="Charges Distribution",
+        xlabel="Charges ($)",
+        ylabel="Frequency"
+    )
+    plot_histogram(
+        df["children"],
+        bins=df["children"].nunique(),
+        title="Children Count",
+        xlabel="Number of Children",
+        ylabel="Frequency"
+    )
+    plot_boxplot(
+        df,
+        "charges",
+        title="Boxplot of Charges",
+        ylabel="Charges ($)"
+    )
     plt.tight_layout()
     plt.show()
 

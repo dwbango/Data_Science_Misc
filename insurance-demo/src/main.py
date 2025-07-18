@@ -1,11 +1,10 @@
-# src/main.py
+# main.py
 
 from download_data import download_data
 from eda import run_eda
 from modeling import run_modeling
 from score import main as run_scoring
 
-# URL for the raw CSV
 DATA_URL = "https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/insurance.csv"
 
 def main():
